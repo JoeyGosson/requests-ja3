@@ -35,15 +35,14 @@ class DESAdapter(HTTPAdapter):
         return super(DESAdapter, self).proxy_manager_for(*args, **kwargs)
 
 
+if __name__ == '__main__':
+    import requests
+    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.67'}
+    s = requests.Session()
+    s.headers.update(headers)
 
-
-import requests
-headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36 Edg/92.0.902.67'}
-s = requests.Session()
-s.headers.update(headers)
-
-for _ in range(5):
-    s.proxies.update()
-    s.mount('https://ja3er.com', DESAdapter())
-    resp = s.get('https://ja3er.com/json').json()
-    print(resp)
+    for _ in range(5):
+        s.proxies.update()
+        s.mount('https://ja3er.com', DESAdapter())
+        resp = s.get('https://ja3er.com/json').json()
+        print(resp)
