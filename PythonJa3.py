@@ -5,7 +5,6 @@
 @Author : JoeyGosson
 @File   : PythonJa3
 @Time   : 2021-09-05 10:07
-@Desc   : 
 """
 import random
 from requests.adapters import HTTPAdapter
