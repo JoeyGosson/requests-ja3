@@ -12,7 +12,7 @@
   ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:ECDH+HIGH:DH+HIGH:ECDH+3DES:DH+3DES:RSA+AESGCM:RSA+AES:RSA+HIGH:RSA+3DES:!aNULL:!eNULL:!MD5
   ```
 
-- 冒号分割了不同的加密算法。这些加密算法每一种顺序其实就对应了一个 JA3 指纹字符串，只要我们修改这个顺序，就能得到不同的JA3字符串。
+- 冒号分割了不同的加密算法。这些加密算法每一种顺序其实就对应了一个 JA3 指纹字符串，只要我们修改这个顺序，就能得到不同的JA3字符串.
 
 - 在 requests 里面，要修改 Cipher Suits 中的加密算法，需要修改 urllib3 里面的 ssl  上下文，并实现一个新的 HTTP 适配器 (HTTPAdapter)。在这个适配器里面，我们在每次请求的时候，随机更换加密算法。但需要注意的是`!aNULL:!eNULL:!MD5`就不用修改了，让他们保持在最后。
 
